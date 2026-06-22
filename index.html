@@ -477,6 +477,7 @@ function setScore(id, val) {
   updateVerdict();
   updateChHeader(id);
   updateSidebar();
+  updateOverview();
   // 기준 평균 업데이트
   const item = ME_DATA.find(i => i.id === id);
   if (item) {
