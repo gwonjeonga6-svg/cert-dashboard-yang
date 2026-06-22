@@ -467,8 +467,8 @@ function switchTab(name, el) {
 
 // ─── 점수 설정 ─────────────────────────────────────────
 function setScore(id, val) {
-  if (scores[id] === val) delete scores[id];
-  else scores[id] = val;
+  // 같은 버튼 다시 누르면 토글하지 않고 유지 (기본값 상 때문에)
+  scores[id] = val;
   // 해당 행 버튼만 업데이트
   const row = document.getElementById('r-' + id);
   if (row) row.querySelectorAll('.sbtn').forEach(b => {
@@ -823,8 +823,12 @@ function resetAll() {
 }
 
 // ─── 초기화 ────────────────────────────────────────────
-renderInput();
-updateOverview();
+document.addEventListener('DOMContentLoaded', function() {
+  renderInput();
+  updateOverview();
+  updateVerdict();
+  updateSidebar();
+});
 </script>
 </body>
 </html>
